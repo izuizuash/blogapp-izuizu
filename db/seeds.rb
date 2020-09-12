@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# ダミーデータを作るためのページ
+
+# terminalで rails db:seedと入力すると実行できるよ
+10. times do
+Article.create(
+  title: Faker::Lorem.sentence(word_count: 5),
+  content: Faker::Lorem.sentence(word_count: 100)
+)
+end
