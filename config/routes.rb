@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: 'articles#index'
   get '/' => 'articles#index'
 # resources便利 URL作ってくれる
-  resources :articles, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :articles
 end
