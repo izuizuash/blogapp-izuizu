@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update]
 
   def index
+    raise StandardError
     @articles = Article.all
     # render 'home/index'
   end
@@ -21,7 +22,7 @@ def create
     render :new
   end
 end
-  
+
   def edit
   end
 
@@ -39,7 +40,6 @@ def destroy
   article.destroy!
   redirect_to root_path, notice: '削除に成功しました'
 end
-
 
   private
   def article_params
