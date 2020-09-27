@@ -11,9 +11,22 @@
 class Article < ApplicationRecord
   # これがないと保存しないよ
   validates :title, presence: true
+  validates :title, length: { minimum: 2, maximum: 100 }
+  validates :title, format: { with: /\A(?!\@)/ }
+
   validates :content, presence: true
+  validates :content, length: { minimum: 10 }
+  validates :content, uniqueness: true
+  # 独自のルールを作るときはs無しのvalidate
+  validate :validate_title_and_content_length
 
   def display_created_at
     I18n.l(self.created_at, format: :default)
+  end
+
+  private
+  def validate_title_and_content_length
+    char_count = self.title.length + self.content.length
+    errors.add(:content, '100文字未満です') unless char_count > 100   
   end
 end
