@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
     # render 'home/index'
   end
   def show
+    @comments = @article.comments
   end
 
   def new
